@@ -1,0 +1,120 @@
+pipeline {
+//   agent { label 'linux' }
+  
+//   tools { jdk 'jdk1.8.0_101' 
+//           maven 'maven-3.5.0'
+//           nodejs "node-8.9.4"
+//   }
+
+//   triggers { pollSCM 'H/3 * * * *' }
+
+//Replace these variables below with correct values
+// - INSERT_GIT_REPO_URL_HERE
+// - PROJECT_FOLDER_NAME_IN_NEXUS
+// - PROJECT
+// Update build steps and post cleanup action
+
+
+//   parameters {
+      // gitParameter branch: '', 
+      // branchFilter: '.*', 
+      // defaultValue: 'master', 
+      // description: 'Select branch name (default master)', 
+      // listSize: '5', 
+      // name: 'Branch', 
+      // quickFilterEnabled: true, 
+      // selectedValue: 'NONE', 
+      // sortMode: 'DESCENDING_SMART', 
+      // tagFilter: '*', 
+      // type: 'PT_BRANCH_TAG', 
+      // useRepository: 'INSERT_GIT_REPO_URL_HERE'
+//    }
+
+//       environment {
+// //        JAVA_HOME = '/.software/jdk1.8.0_101'
+//           major = 2
+//           minor = 1
+//           Version = "$major.$minor.$env.BUILD_NUMBER"
+// //        nexusfolder="PROJECT_FOLDER_NAME_IN_NEXUS"
+//           packagesraw="https://NEXUSURL.ca/nexus/repository/NEXUSREPONAME/${nexusfolder}"        
+//       }  
+
+
+  // stages {
+  //   stage('Checkout Source Code') {
+  //     steps {
+  //         checkout( 
+  //             changelog: true, 
+  //             poll: false, 
+  //             scm: [$class: 'GitSCM', branches: [[name: '$Branch']], 
+  //             doGenerateSubmoduleConfigurations: false, 
+  //             extensions: [], 
+  //             gitTool: 'git', 
+  //             submoduleCfg: [], 
+  //             userRemoteConfigs: [[
+  //                 credentialsId: 'GITUSERNAME', 
+  //                 url: 'INSERT_GIT_REPO_URL_HERE']]])
+  //     }
+  //   }
+
+//     stage('Build') {
+//       steps {
+// //      sh 'mvn -B -DskipTests -fpom.xml clean package'
+// OR for Ant builds
+// //      withAnt(installation: 'ant-1.9.4') {
+// //        sh 'ant -f build.xml -Dbuild.version=$Version'  
+// //      }
+//       }
+//     }
+
+//     stage('Artifact manupulation') {
+// //      failFast true
+//       steps {
+//         echo 'Post-build check...'
+//         sh 'mv target/PROJECT.war target/PROJECT-$Version.war'  
+//         script {
+//             def controlFile = "target/PROJECT-${Version}.war"
+//             if (fileExists(controlFile)) {
+//                 echo "${controlFile} exists"
+//             } else {
+//                 error("${controlFile} is missing. Will now fail the job.")               
+//             }
+//         }
+//       }
+//     }
+
+    // stage('Upload to Nexus') {
+    //   steps {
+    //       echo 'Uploading to Nexus...'
+    //       withCredentials([usernameColonPassword(credentialsId: 'NEXUSUSERNAME', variable: 'nexuspw')]) {
+    //       sh "curl -v -u '${nexuspw}' --upload-file target/PROJECT-${Version}.war ${packagesraw}/PROJECT-${Version}.war"          
+    //       }
+    //     }
+    // }
+
+  //   stage('Add description') {
+  //     steps {
+  //        echo 'Updating description...'
+  //        script {
+  //           def description = "<a href=${packagesraw}/PROJECT-${Version}.war>PROJECT-${Version}.war</a>"
+  //           currentBuild.setDescription(description)
+  //        }
+  //     }                
+  //   }
+  // }    
+
+  // post {
+  //     always { 
+  //       logstashSend failBuild: false, maxLines: 1000 
+  //       influxDbPublisher customPrefix: '', customProjectName: '', jenkinsEnvParameterField: '', jenkinsEnvParameterTag: '', selectedTarget: 'jenkins_data'        
+  //     }
+  //     unstable {
+  //       emailext body: '${DEFAULT_CONTENT}', subject: '${DEFAULT_SUBJECT}', to: "${DEFAULT_RECIPIENTS}"  
+  //     }
+  //     cleanup {
+  //       cleanWs(patterns: [[pattern: 'target/*.war', type: 'INCLUDE']])
+  //       //OR
+  //       cleanWs()
+  //     }
+  //   }
+}
